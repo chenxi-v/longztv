@@ -1,0 +1,194 @@
+/* ============================================
+   ArtPlayer Liquid Glass Plugin Styles
+   毛玻璃效果控制栏插件样式
+   ============================================ */
+
+.artplayer-plugin-liquid-glass {
+  --art-control-height: 42px;
+  --art-control-icon-size: 24px;
+  --art-control-icon-scale: 1.1;
+}
+
+/* 播放器容器基础样式 */
+.art-video-player {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.art-video-player .art-video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+/* 网页全屏样式 */
+.art-video-player.art-web-fullscreen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999 !important;
+  background: #000 !important;
+}
+
+.art-video-player.art-web-fullscreen .art-video {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 始终移除默认背景渐变，避免收回时出现残影 */
+.artplayer-plugin-liquid-glass .art-bottom {
+  align-items: center;
+  background-image: none !important;
+  background: transparent !important;
+}
+
+/* 毛玻璃容器样式 */
+.artplayer-plugin-liquid-glass .art-bottom .art-liquid-glass {
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: var(--art-padding) calc(var(--art-padding) * 1.5) 5px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* 控制栏显示状态 */
+.artplayer-plugin-liquid-glass.art-control-show .art-bottom {
+  padding-bottom: var(--art-padding);
+}
+
+/* 控制栏收回时隐藏毛玻璃效果 */
+.artplayer-plugin-liquid-glass:not(.art-control-show) .art-bottom .art-liquid-glass {
+  opacity: 0;
+}
+
+.artplayer-plugin-liquid-glass.art-control-show .art-settings {
+  bottom: calc(
+    var(--art-control-height) + var(--art-bottom-gap) + var(--art-padding)
+  );
+}
+
+.artplayer-plugin-liquid-glass.art-control-show .art-layer-auto-playback {
+  bottom: calc(
+    var(--art-control-height) + var(--art-bottom-gap) + var(--art-padding) * 4 +
+      10px
+  );
+}
+
+/* 让按钮可自动缩小，防止溢出 */
+.artplayer-plugin-liquid-glass .art-control {
+  flex-shrink: 1 !important;
+  min-width: 32px !important;
+  padding: 0 6px !important;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  /* 调整控制栏容器高度 */
+  .artplayer-plugin-liquid-glass .art-bottom {
+    height: auto !important;
+    padding: 50px 10px 0 !important;
+  }
+
+  /* 缩小控制栏内边距 */
+  .artplayer-plugin-liquid-glass .art-controls {
+    padding: 6px 10px !important;
+    height: auto !important;
+  }
+
+  /* 缩小按钮尺寸 */
+  .artplayer-plugin-liquid-glass .art-control {
+    min-width: 32px !important;
+    height: 32px !important;
+    padding: 0 4px !important;
+  }
+
+  .artplayer-plugin-liquid-glass .art-control .art-icon {
+    font-size: 16px !important;
+  }
+
+  /* 缩小时间显示 */
+  .artplayer-plugin-liquid-glass .art-control-time {
+    font-size: 11px !important;
+    padding: 0 6px !important;
+  }
+
+  /* 进度条移动端优化 */
+  .artplayer-plugin-liquid-glass .art-progress {
+    height: 3px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .artplayer-plugin-liquid-glass .art-control-progress {
+    height: 3px !important;
+  }
+
+  .artplayer-plugin-liquid-glass .art-control-progress-inner {
+    height: 100% !important;
+  }
+
+  /* 毛玻璃容器移动端适配 */
+  .artplayer-plugin-liquid-glass .art-bottom .art-liquid-glass {
+    border-radius: 6px;
+    padding: 8px 10px 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 调整控制栏容器高度 */
+  .artplayer-plugin-liquid-glass .art-bottom {
+    padding: 45px 8px 0 !important;
+  }
+
+  /* 进一步缩小 */
+  .artplayer-plugin-liquid-glass .art-controls {
+    padding: 4px 8px !important;
+  }
+
+  .artplayer-plugin-liquid-glass .art-control {
+    min-width: 28px !important;
+    height: 28px !important;
+    padding: 0 3px !important;
+  }
+
+  .artplayer-plugin-liquid-glass .art-control .art-icon {
+    font-size: 14px !important;
+  }
+
+  .artplayer-plugin-liquid-glass .art-control-time {
+    font-size: 10px !important;
+    padding: 0 4px !important;
+  }
+
+  /* 进度条小屏幕优化 */
+  .artplayer-plugin-liquid-glass .art-progress {
+    height: 2px !important;
+    margin-bottom: 3px !important;
+  }
+
+  .artplayer-plugin-liquid-glass .art-control-progress {
+    height: 2px !important;
+  }
+
+  /* 小屏幕隐藏一些次要按钮 */
+  .artplayer-plugin-liquid-glass .art-control-screenshot,
+  .artplayer-plugin-liquid-glass .art-control-flip {
+    display: none !important;
+  }
+
+  /* 毛玻璃容器小屏幕适配 */
+  .artplayer-plugin-liquid-glass .art-bottom .art-liquid-glass {
+    border-radius: 4px;
+    padding: 6px 8px 3px;
+  }
+}
+
+@media (max-width: 360px) {
+  /* 超小屏幕再隐藏一些按钮 */
+  .artplayer-plugin-liquid-glass .art-control-setting,
+  .artplayer-plugin-liquid-glass .art-control-pip {
+    display: none !important;
+  }
+}

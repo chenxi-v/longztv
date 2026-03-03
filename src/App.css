@@ -1,0 +1,382 @@
+/* 全局样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.app {
+  min-height: 100vh;
+  background: #1a1a2e;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ==================== 悬浮胶囊导航栏样式（移植自LongTV-main） ==================== */
+
+/* 导航栏外层容器 */
+.navbar {
+  position: fixed;          /* 定位：固定定位 */
+  top: 16px;                /* 顶部距离：16px (相当于 top-4) */
+  left: 50%;                /* 左边距离：50% */
+  transform: translateX(-50%); /* 变换：居中 */
+  z-index: 50;              /* 层级：50 */
+}
+
+/* 导航栏胶囊容器 */
+.navbar-container {
+  display: flex;            /* 布局：弹性布局 */
+  align-items: center;      /* 垂直对齐：居中 */
+  background: rgba(17, 24, 39, 0.9); /* 背景颜色：半透明深灰色 */
+  backdrop-filter: blur(24px);       /* 背景模糊：24px */
+  -webkit-backdrop-filter: blur(24px); /* Safari兼容 */
+  border-radius: 9999px;    /* 圆角：完全圆角（胶囊形状） */
+  border: 1px solid rgba(75, 85, 99, 0.5); /* 边框：半透明灰色 */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2); /* 阴影 */
+  padding: 6px 8px;         /* 内边距：上下6px 左右8px */
+}
+
+/* 左侧按钮区域 */
+.navbar-left {
+  display: flex;            /* 布局：弹性布局 */
+  align-items: center;      /* 垂直对齐：居中 */
+  justify-content: center;  /* 水平对齐：居中 */
+  gap: 4px;                 /* 按钮间距：4px */
+  width: 120px;             /* 固定宽度：120px */
+}
+
+/* 分隔线 */
+.navbar-divider {
+  width: 1px;               /* 宽度：1px */
+  height: 24px;             /* 高度：24px */
+  background: rgba(75, 85, 99, 0.5); /* 颜色：半透明灰色 */
+}
+
+/* Logo区域 */
+.navbar-logo {
+  display: flex;            /* 布局：弹性布局 */
+  align-items: center;      /* 垂直对齐：居中 */
+  justify-content: center;  /* 水平对齐：居中 */
+  padding: 0 24px;          /* 内边距：左右24px */
+  min-width: 100px;         /* 最小宽度：100px */
+  cursor: pointer;          /* 鼠标样式：手型 */
+}
+
+.navbar-logo-text {
+  font-size: 1.125rem;      /* 字体大小：18px */
+  font-weight: 700;         /* 字体粗细：粗体 */
+  color: white;             /* 文字颜色：白色 */
+  transition: transform 0.2s ease; /* 过渡动画 */
+}
+
+.navbar-logo-text:hover {
+  transform: scale(1.05);   /* 悬浮效果：放大1.05倍 */
+}
+
+.navbar-logo-tv {
+  color: #60a5fa;           /* TV文字颜色：蓝色 */
+}
+
+/* 右侧按钮区域 */
+.navbar-right {
+  display: flex;            /* 布局：弹性布局 */
+  align-items: center;      /* 垂直对齐：居中 */
+  justify-content: center;  /* 水平对齐：居中 */
+  gap: 4px;                 /* 按钮间距：4px */
+  width: 120px;             /* 固定宽度：120px */
+}
+
+/* 导航按钮 */
+.navbar-btn {
+  display: flex;            /* 布局：弹性布局 */
+  align-items: center;      /* 垂直对齐：居中 */
+  justify-content: center;  /* 水平对齐：居中 */
+  width: 36px;              /* 宽度：36px */
+  height: 36px;             /* 高度：36px */
+  border-radius: 9999px;    /* 圆角：完全圆角 */
+  border: none;             /* 边框：无边框 */
+  background: transparent;  /* 背景：透明 */
+  cursor: pointer;          /* 鼠标样式：手型 */
+  transition: all 0.2s ease; /* 过渡动画：0.2秒 */
+}
+
+/* 按钮悬浮效果 - 视频 */
+.navbar-btn-video:hover {
+  background: rgba(147, 51, 234, 0.2); /* 背景：紫色半透明 */
+}
+
+.navbar-btn-video:hover .navbar-icon {
+  color: #c084fc;           /* 图标颜色：紫色 */
+}
+
+/* 按钮悬浮效果 - 搜索 */
+.navbar-btn-search:hover {
+  background: rgba(59, 130, 246, 0.2); /* 背景：蓝色半透明 */
+}
+
+.navbar-btn-search:hover .navbar-icon {
+  color: #60a5fa;           /* 图标颜色：蓝色 */
+}
+
+/* 按钮悬浮效果 - 历史 */
+.navbar-btn-history:hover {
+  background: rgba(249, 115, 22, 0.2); /* 背景：橙色半透明 */
+}
+
+.navbar-btn-history:hover .navbar-icon {
+  color: #fb923c;           /* 图标颜色：橙色 */
+}
+
+/* 按钮悬浮效果 - 设置 */
+.navbar-btn-settings:hover {
+  background: rgba(156, 163, 175, 0.2); /* 背景：灰色半透明 */
+}
+
+.navbar-btn-settings:hover .navbar-icon {
+  color: white;             /* 图标颜色：白色 */
+}
+
+/* 按钮图标 */
+.navbar-icon {
+  width: 16px;              /* 宽度：16px */
+  height: 16px;             /* 高度：16px */
+  color: #9ca3af;           /* 颜色：灰色 */
+  transition: color 0.2s ease; /* 过渡动画 */
+}
+
+/* ==================== 移动端适配 ==================== */
+@media (max-width: 768px) {
+  .navbar {
+    top: 8px;               /* 顶部距离：8px */
+  }
+  
+  .navbar-container {
+    padding: 4px 6px;       /* 内边距：更小 */
+  }
+  
+  .navbar-left,
+  .navbar-right {
+    width: 100px;           /* 宽度：100px */
+    gap: 2px;               /* 间距：2px */
+  }
+  
+  .navbar-logo {
+    padding: 0 16px;        /* 内边距：更小 */
+    min-width: 80px;        /* 最小宽度：80px */
+  }
+  
+  .navbar-logo-text {
+    font-size: 1rem;        /* 字体大小：16px */
+  }
+  
+  .navbar-btn {
+    width: 32px;            /* 宽度：32px */
+    height: 32px;           /* 高度：32px */
+  }
+  
+  .navbar-icon {
+    width: 14px;            /* 宽度：14px */
+    height: 14px;           /* 高度：14px */
+  }
+  
+  .navbar-divider {
+    height: 20px;           /* 高度：20px */
+  }
+}
+
+/* ==================== 页面头部和返回按钮样式 ==================== */
+
+/* 页面头部容器 */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  position: relative;
+}
+
+/* 返回按钮 */
+.back-button {
+  position: absolute;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(59, 130, 246, 0.2);
+  color: white;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+}
+
+.back-button:hover {
+  background: rgba(59, 130, 246, 0.3);
+  transform: translateX(-2px);
+}
+
+/* 英雄区域样式 */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: transparent;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  padding-top: 80px;
+  z-index: 1;
+}
+
+.hero-content {
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 页脚样式 */
+.footer {
+  background: #1e293b;
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+/* 回到顶部按钮 */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(147, 51, 234, 0.8));
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-top-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(59, 130, 246, 0.5);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(147, 51, 234, 0.9));
+}
+
+.back-to-top-btn:active {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .back-to-top-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-content {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+}
+
+/* ==================== 加载屏幕样式 ==================== */
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  z-index: 100;
+}
+
+.loading-screen p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(59, 130, 246, 0.2);
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
